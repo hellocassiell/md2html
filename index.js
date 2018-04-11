@@ -10,7 +10,7 @@ fs.watchFile(target, {
     persistent: true,
     interval: 200
 }, (curr, prev) => {
-    //修改时间
+    //修改时间判断
     if (curr.mtime === prev.mtime) {
         return false;
     };
@@ -31,6 +31,7 @@ fs.watchFile(target, {
 
 
         var allHtml = template.replace('{{{content}}}', html).replace('{{{title}}}', title);
+        // 写入html文件
         fs.writeFile('./index.tmpl.html', allHtml, 'utf8', (err) => {
             if (err) throw err;
             console.log('写入成功！');
@@ -42,7 +43,7 @@ fs.watchFile(target, {
 function Totitle(data) {
     var arr = data.split(/\n/);
     var str;
-    arr.forEach(function (item, index) {
+    arr.forEach((item, index) => {
         if (item.search('title:') != -1) {
             str = item;
         }
