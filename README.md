@@ -15,4 +15,6 @@ npm start
 
 - webpack 实现less转css的处理，以main.js为入口，找出相关依赖，进行打包，用HtmlWebpackPlugin通过模板文件生成html，webpack-dev-server服务器热加载html。
 
-[预览](https://github.com/hellocassiell/md2html/blob/master/img/1.png)
+-预览
+
+![alt text](https://github.com/hellocassiell/md2html/blob/master/img/1.png)
