@@ -10,7 +10,7 @@ module.exports = {
     },
     devServer: {
         contentBase: "./build",//本地服务器所加载的页面所在的目录
-        port: 8088,  //设置默认监听端口，如果省略，默认为”8080“
+        port: 8091,  //设置默认监听端口，如果省略，默认为”8080“
         historyApiFallback: true,//不跳转
         inline: true, //实时刷新
         hot: true
