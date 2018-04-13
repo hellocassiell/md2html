@@ -1,31 +1,26 @@
 {
-  "name": "webpack-learning",
+  "name": "md-html",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "do": "node index.js ./md/test.md &",
-    "build": "webpack",
-    "server": "webpack-dev-server --open &",
-    "start": "npm run server && npm run do"
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^7.2.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.30.1",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
-    "postcss-loader": "^2.0.9",
     "style-loader": "^0.19.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.7"
+    "webpack": "^3.8.1"
   },
   "dependencies": {
     "marked": "^0.3.19"

@@ -2,8 +2,19 @@ const path = require('path');
 const fs = require('fs');
 const marked = require('marked');
 var template = require('./public/js/template.js');
-// 命令行传入的参数,表明md文件路径，如: './1.md'
-var target = path.join(__dirname, process.argv[2]);
+// 命令行传入的参数,输入md文件名称，如: '1.md'
+var target = path.join(__dirname+'/md', process.argv[2]);
+var filename = process.argv[2].replace(path.extname(process.argv[2]),'.html');
+var filePath = path.join(__dirname+'/html', filename);
+
+
+const browserSync = require('browser-sync');
+browserSync({
+    browser: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    server:path.dirname(filePath),
+    index:path.basename(filename),
+    notify:false
+});
 
 
 // fs模块监视文件
@@ -23,7 +34,7 @@ fs.watchFile(target, {
             title = Totitle(data);
             dataAll = data.split("---")[2];
         } else {
-            title = null;
+            title = '';
             dataAll = data;
         }
 
@@ -33,10 +44,10 @@ fs.watchFile(target, {
 
         var allHtml = template.replace('{{{content}}}', html).replace('{{{title}}}', title);
         // 写入html文件
-        fs.writeFile('./html/index.tmpl.html', allHtml, 'utf8', (err) => {
+        fs.writeFile('./html/'+filename, allHtml, 'utf8', (err) => {
             if (err) throw err;
             console.log('写入成功！');
-
+            browserSync.reload(path.basename(filePath+filename));
         });
     });
 });

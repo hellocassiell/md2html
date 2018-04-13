@@ -33,27 +33,7 @@ var template = `
             t.parentNode.insertBefore(e, t)
         }()
     </script>
-   <script>
-   
-$(function () {
-    $(".mobile-bar .menu-button").on("click", function () {
-        $(".mobile-content").toggleClass("open")
-    }), $(".mobile-mask").on("click", function () {
-        $(".mobile-content").removeClass("open")
-    }), $(".main-menu-item.active > .main-menu-link").on("click", function (e) {
-        $(this).closest(".main-menu-item").toggleClass("active"), e.preventDefault()
-    }), $(".code-group").delegate(".code-group-title[data-lng]", "click", function () {
-        var e = $(this),
-            t = e.closest(".code-group"),
-            i = e.attr("data-lng");
-        e.siblings(".active").removeClass("active"), t.find(".highlight.active").removeClass("active"), e.addClass("active"), t.find('.highlight[data-lng="' + i + '"]').addClass("active")
-    }), SmoothScroll('a[href*="#"]', {
-        offset: 60
-    }), FastClick.attach(document.body), $("#mainMenu .main-menu-item.current > .main-menu-link").on("click", function (e) {
-        $(this).closest(".main-menu-item").addClass("active"), e.preventDefault()
-    })
-});
-   </script>
+  
 </head>
 
 <body class="page">
@@ -336,6 +316,7 @@ $(function () {
     <script>
         window.PAGE_TYPE = "quick_start"
     </script>
+    <script type="text/javascript" src="static/bundle.js"></script>
 </body>
 
 </html>
