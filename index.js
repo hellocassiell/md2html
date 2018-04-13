@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const marked = require('marked');
+var template = require('./public/js/template.js');
 // 命令行传入的参数,表明md文件路径，如: './1.md'
 var target = path.join(__dirname, process.argv[2]);
 
@@ -22,7 +23,7 @@ fs.watchFile(target, {
             title = Totitle(data);
             dataAll = data.split("---")[2];
         } else {
-            title = '未设标题';
+            title = null;
             dataAll = data;
         }
 
@@ -32,7 +33,7 @@ fs.watchFile(target, {
 
         var allHtml = template.replace('{{{content}}}', html).replace('{{{title}}}', title);
         // 写入html文件
-        fs.writeFile('./index.tmpl.html', allHtml, 'utf8', (err) => {
+        fs.writeFile('./html/index.tmpl.html', allHtml, 'utf8', (err) => {
             if (err) throw err;
             console.log('写入成功！');
 
@@ -54,30 +55,3 @@ function Totitle(data) {
 
 }
 
-var template = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ProductAI</title>
-    
-</head>
-<body>
-<header id="header" class="page-hd">
-ProductAI 开发者文档
-</header>
-<aside class="sidebar">
-</aside>
-<div class="page-bd">
-    <article class="post">
-    <header class="post-hd">
-      {{{title}}}
-    </header>
-    <div class="post-bd">
-     {{{content}}}
-    </div>
-    </article>
-</div>
-</body>
-</html>
-`;

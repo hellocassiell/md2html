@@ -6,7 +6,6 @@
     <title>使用SDK进行开发</title>
     <meta name="description" content="ProductAI® provides state-of-the-art APIs for visual product recognition based on artificial intelligence.">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         @font-face {
             font-family: Consolas;
@@ -24,6 +23,7 @@
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215
         }
     </style>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://hm.baidu.com/hm.js?6733c4a4460763145f64601e0cdb020c"></script>
     <script>
         var _hmt = _hmt || [];
@@ -34,6 +34,27 @@
             t.parentNode.insertBefore(e, t)
         }()
     </script>
+   <script>
+   
+$(function () {
+    $(".mobile-bar .menu-button").on("click", function () {
+        $(".mobile-content").toggleClass("open")
+    }), $(".mobile-mask").on("click", function () {
+        $(".mobile-content").removeClass("open")
+    }), $(".main-menu-item.active > .main-menu-link").on("click", function (e) {
+        $(this).closest(".main-menu-item").toggleClass("active"), e.preventDefault()
+    }), $(".code-group").delegate(".code-group-title[data-lng]", "click", function () {
+        var e = $(this),
+            t = e.closest(".code-group"),
+            i = e.attr("data-lng");
+        e.siblings(".active").removeClass("active"), t.find(".highlight.active").removeClass("active"), e.addClass("active"), t.find('.highlight[data-lng="' + i + '"]').addClass("active")
+    }), SmoothScroll('a[href*="#"]', {
+        offset: 60
+    }), FastClick.attach(document.body), $("#mainMenu .main-menu-item.current > .main-menu-link").on("click", function (e) {
+        $(this).closest(".main-menu-item").addClass("active"), e.preventDefault()
+    })
+});
+   </script>
 </head>
 
 <body class="page">
@@ -45,7 +66,7 @@
             </button>
         </div>
         <a href="/zh" class="page-logo">
-            <img src="/images/logo.svg">
+            <img src="http://developers.productai.com/images/logo.svg">
             <span class="slogan">开发者文档</span>
         </a>
         <ul class="page-nav">
@@ -340,11 +361,12 @@
 </blockquote>
 <h2 id="-">创建第一个搜索服务</h2>
 <p>ProductAI使用access_key_id和secret_key来识别客户，同时保护客户的调用不会被第三方滥用。下面的示例代码会创建一个使用客户 access_key_id和secret_key的客户端对象。查看access_key_id和secret_key方法请参考<a href="../console/access_key">这里</a>。</p>
-<pre><code>from productai import Client
+<pre><code class="lang-python">from productai import Client
 
 # 输入access_key_id和secret_key创建客户端
 cli = Client(ACCESS_KEY_ID, SECRET_KEY)
-</code></pre><pre><code class="lang-php">use ProductAI;
+</code></pre>
+<pre><code class="lang-php">use ProductAI;
 
 $product_ai = new ProductAI\API(ACCESS_KEY_ID, SECRET_KEY, &#39;zh-Hans&#39;);
 </code></pre>
@@ -502,6 +524,6 @@ foreach (var r in response.Results) {
     <script>
         window.PAGE_TYPE = "quick_start"
     </script>
-<script type="text/javascript" src="bundle.js"></script></body>
+</body>
 
 </html>

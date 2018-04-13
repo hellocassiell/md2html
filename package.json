@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "do": "node index.js ./test.md &",
+    "do": "node index.js ./md/test.md &",
     "build": "webpack",
     "server": "webpack-dev-server --open &",
     "start": "npm run server && npm run do"
